@@ -30,13 +30,20 @@ var ItemSchema = new Schema(
         type: Number, 
         required: true
     },
+    size: {
+        type: [Number],
+        required: true,
+        default: [],
+    },
     avaialbe_month: {
         type: [Number],
-        required: true
+        required: true,
+        default: [1,2,3,4,5,6,7,8,9,10,11,12],
     },
     image_source: {
         type: String, 
-        required: true
+        required: true,
+        default: "bakingbunny image link"
     }
   }
 

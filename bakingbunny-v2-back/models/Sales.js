@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Schema = mongoose.Schema;
+
 const SalesSchema = new mongoose.Schema({
     
     customer      : {
@@ -22,10 +24,11 @@ const SalesSchema = new mongoose.Schema({
 				required : true
 			},
 			
-			item_name        : {
-				type     : String,
-				required : true
-			},
+			item        : {
+				type: Schema.Types.ObjectId, 
+				ref: 'item', 
+				required: true
+			},			
 
 			amount      : {
 				type     : Number,
