@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-var ItemSchema = new Schema(
+var itemSchema = new Schema(
   
   {
     type: {
@@ -50,4 +50,4 @@ var ItemSchema = new Schema(
 );
 
 //Export model
-module.exports = mongoose.model('item', ItemSchema);
+module.exports = mongoose.model('Item', itemSchema);
