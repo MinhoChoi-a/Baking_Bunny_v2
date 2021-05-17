@@ -7,7 +7,8 @@
     "dev": "nodemon app.js",
     "build:ui": "rm -rf build && cd ../bakingbunny-v2-front/ && npm run build --prod && cp -r build ../bakingbunny-v2-back",
     "depoly": "some command to git and etc.",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "jest --verbose"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +22,10 @@
   },
   "devDependencies": {
     "eslint": "^7.26.0",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7"
+  },
+  "jest": {
+    "testEnvironment":"node"
   }
 }
