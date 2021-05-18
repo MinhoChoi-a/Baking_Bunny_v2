@@ -17,10 +17,15 @@ const initialItems = [
 beforeEach(async () => {
     await Item.deleteMany({})
 
+    const itemObjects = initialItems.map(item => new Item(item))
+    const promiseArray = itemObjects.map(item => item.save())
+    await Promise.all(promiseArray) //if use for loop, then it will make another callback function for each await method
+    
+    /*
     let itemObject = new Item(initialItems[0])
     await itemObject.save()
     itemObject = new Item(initialItems[1])
-    await itemObject.save()
+    await itemObject.save()*/
 })
 
 test('notes are returned as json', async () => {
