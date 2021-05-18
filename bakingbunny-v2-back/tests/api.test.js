@@ -27,7 +27,7 @@ beforeEach(async () => {
     itemObject = new Item(initialItems[1])
     await itemObject.save()*/
 })
-
+describe('grouping test', () => {
 test('notes are returned as json', async () => {
     await api
         .get('/api/notes')
@@ -53,7 +53,7 @@ test('a specific item is within the returned items', async () => {
     const contents = response.body.map(r => r.content)
     expect(contents).toContain('something')
 })
-
+})
 
 afterAll(() => {
     mongoose.connection.close()
