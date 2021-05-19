@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const itemControl = require('../controllers/ItemController');
+const customerControl = require('../controllers/CustomerController');
 
 /* GET home page. */
 router.get('/', (req, res, next) =>
@@ -11,5 +12,8 @@ router.get('/', (req, res, next) =>
 router.get('/menu/:date', itemControl.getMenu);
 //get item info => check selected date and return list of available item list
 //post order from cart => add customer/sales info + send email
+
+
+router.post('/user', customerControl);
 
 module.exports = router;

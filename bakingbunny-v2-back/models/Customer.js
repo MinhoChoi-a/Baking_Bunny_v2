@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 var customerSchema = new Schema(
   
   {
+    username: String,
+    
+    passwordHash: String,    
+    
     name: {
         type: String, 
         required: true
@@ -24,6 +28,19 @@ var customerSchema = new Schema(
   }
 
 );
+
+customerSchema.set('toJSON', {
+
+  transform: (document, returnedObject) => {
+
+    returnedObject.id = returnedObject._id.toString()
+
+    delete returnedObject._id
+    delete returnedObject.__v
+    delete returnedObject.passwordHash
+
+  }
+})
 
 //Export model
 module.exports = mongoose.model('Customer', customerSchema);
