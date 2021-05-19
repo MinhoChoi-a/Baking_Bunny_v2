@@ -1,6 +1,7 @@
 //npm run dev
 
 require('dotenv').config();
+require('express-async-errors') // to eliminate the catch in async/await method => we can remove try/catch block => the error on async function will be handled with this library automatically
 
 var createError = require('http-errors');
 var express = require('express');

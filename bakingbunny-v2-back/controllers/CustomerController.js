@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt')
+const { response } = require('../app')
 const Customer = require('../models/Customer')
+
 
 exports.signon = async (req, res, next) => {
 
@@ -17,5 +19,15 @@ exports.signon = async (req, res, next) => {
     })
 
     const savedCustomer = await customer.save()
+
+}
+
+exports.getAllUser = async (req, res, next) => {
+
+    const users = await Customer
+        .find({})
+        //.populate('field_name', {chosing codition e.g oneField: value}): we can replace data with the referenced document
+    
+    res.json(users)
 
 }

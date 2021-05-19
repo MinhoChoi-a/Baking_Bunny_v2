@@ -14,6 +14,7 @@ router.get('/menu/:date', itemControl.getMenu);
 //post order from cart => add customer/sales info + send email
 
 
-router.post('/user', customerControl);
+router.post('/user', customerControl.signon);
+router.get('/user', customerControl.getAllUser);
 
 module.exports = router;
