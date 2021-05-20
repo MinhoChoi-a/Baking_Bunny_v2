@@ -6,11 +6,12 @@ require('express-async-errors') // to eliminate the catch in async/await method 
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+//var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //const cors = require('cors') / app.use(cors())
 
 var mongoose = require('mongoose');
+const middleware = require('./middleware/errorHandler')
 
 const MONGODB_URI = process.env.NODE_ENV === 'test'
   ? process.env.TEST_MONGODB_URI
@@ -31,14 +32,15 @@ app.set('view engine', 'jade');
 //middleware: executed one by one
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(express.urlencoded({ extended: false }));
+//app.use(cookieParser());
 app.use(express.static('build'));
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
+app.user(middleware.errorHandler)
+/*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -53,6 +55,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
+});*/
 
 module.exports = app;

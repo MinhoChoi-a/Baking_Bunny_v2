@@ -33,7 +33,7 @@ const getTokenFrom = request => {
 }
 
 //using jwt
-exports.order = async (req, res, next) => {
+exports.addItem = async (req, res, next) => {
 
     const body = req.body
     const token = getTokenFrom(req)
