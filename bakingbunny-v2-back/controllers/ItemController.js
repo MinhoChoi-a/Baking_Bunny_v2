@@ -45,8 +45,8 @@ exports.addItem = async (req, res, next) => {
 
     }
 
-    //any code of method for authorized user
     const user = await Customer.findById(decodedToken.id)
-    
+
+    //any code of method for authorized user
     res.json('something')
 }
