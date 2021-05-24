@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css';
 
 import loginService from '../service/login'
@@ -10,6 +10,8 @@ const App = () => {
   const [username, setUsername] = useState('')   
   const [password, setPassword] = useState('') 
   const [user, setUser] = userState(null)
+
+  const [loginVisible, setLoginVisible] = useState(false)
 
   useEffect(() => {
 
@@ -63,6 +65,10 @@ const App = () => {
 
   const loginForm = () => {
 
+    const hideWhenVisible = { display : loginVisible ? 'none': ''}
+    const showWhenVisible = { display : loginVisible ? '': 'none'}
+
+    return (
     <div>
       <h1>Login Test</h1>
       
@@ -80,21 +86,44 @@ const App = () => {
         <button type="submit">login</button>
       </form>
 
-    </div>
+    </div>)
   }
 
-  const afterLoginForm =() => {
+  const afterLoginForm = () => {
+    
+    return (
     <div>
     <h1>Logged in</h1>
     
     <button type="button" onClick={() => handleLogout()}>logout</button>
-    </div>
+    </div> )
   }
-    
+  
+  const Togglable = (props) => {
+
+    return (
+    <div>
+      <h1>check prop.childer</h1>
+      
+      <div>
+        { props.children } //loginForm
+      </div>
+
+    </div> )
+  }
+
   return (
     <div>
       <h1>Baking bunny</h1>
     
+    <div style={hideWhenVisible}>
+      <Togglable>
+        <loginForm
+          username = {username}
+          />
+      </Togglable>
+    </div>
+
     {
       user === null ?
       loginForm :
