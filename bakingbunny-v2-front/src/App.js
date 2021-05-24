@@ -4,6 +4,8 @@ import './App.css';
 import loginService from '../service/login'
 import tokenService from '../service/testToken'
 
+import Togglable from '../component/Togglable'
+
 const App = () => {
 
   const [errorMessage, setErrorMessage] = useState(null)
@@ -12,6 +14,8 @@ const App = () => {
   const [user, setUser] = userState(null)
 
   const [loginVisible, setLoginVisible] = useState(false)
+
+  const loginFormRef = useRef()
 
   useEffect(() => {
 
@@ -68,6 +72,8 @@ const App = () => {
     const hideWhenVisible = { display : loginVisible ? 'none': ''}
     const showWhenVisible = { display : loginVisible ? '': 'none'}
 
+    loginFormRef.current.toggleVisibility() //way to use ref
+
     return (
     <div>
       <h1>Login Test</h1>
@@ -98,26 +104,13 @@ const App = () => {
     <button type="button" onClick={() => handleLogout()}>logout</button>
     </div> )
   }
-  
-  const Togglable = (props) => {
-
-    return (
-    <div>
-      <h1>check prop.childer</h1>
-      
-      <div>
-        { props.children } //loginForm
-      </div>
-
-    </div> )
-  }
 
   return (
     <div>
       <h1>Baking bunny</h1>
     
     <div style={hideWhenVisible}>
-      <Togglable>
+      <Togglable ref={loginFormRef}>
         <loginForm
           username = {username}
           />
