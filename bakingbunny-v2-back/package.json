@@ -8,7 +8,8 @@
     "build:ui": "rm -rf build && cd ../bakingbunny-v2-front/ && npm run build --prod && cp -r build ../bakingbunny-v2-back",
     "depoly": "some command to git and etc.",
     "lint": "eslint .",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "start:test": "cross-env NODE_ENV=test node index.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
