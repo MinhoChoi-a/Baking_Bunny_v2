@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { createStore } from 'redux'
+
 import './App.css';
 
 import loginService from '../service/login'
 import tokenService from '../service/testToken'
 
 import Togglable from '../component/Togglable'
+
+import reducer from './reducer' //defines impact of action to the state of the application
+
+const store = createStore(reducer)
+//dispatch => send action to the store
+//getState => get current state
+//subscribe => can make callback functino when store's state is changed
+
 
 const App = () => {
 
@@ -30,7 +40,10 @@ const App = () => {
       tokenService.setToken(user.token)
     }
 
-  }, []) //empty array ensures that this effect should be executed only when the component is rendered for the first time.
+  }, []) 
+  //dependency array
+  //empty array ensures that this effect should be executed only when the component is rendered for the first time.
+  //if I put 'user', then this useEffect will be working when user data is updated only.
 
 
   const handleLogin = (event) => {
