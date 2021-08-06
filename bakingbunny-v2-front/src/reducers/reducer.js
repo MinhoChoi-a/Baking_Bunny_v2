@@ -1,3 +1,16 @@
+const initialState = [
+  {
+    content: 'reducer defines how redux store works',
+    important: true,
+    id: 1,
+  },
+  {
+    content: 'state of store can contain any data',
+    important: false,
+    id: 2,
+  },
+]
+
 const noteReducer1 = (state = [], action) => {
     switch(action.type) {
       case 'NEW_NOTE':
@@ -28,8 +41,14 @@ const noteReducer2 = (state = [], action) => {
       default:
       return state
     }
+}
+  
+  export const initializeNotes = (notes) => {
+    return {
+      type: 'INIT_NOTES',
+      data: notes,
+    }
   }
-
 /*
   const numbers = [1, 2, 3, 4, 5, 6]
 
@@ -39,3 +58,4 @@ const noteReducer2 = (state = [], action) => {
   console.log(second)   // prints 2
   console.log(rest)     // prints [3, 4, 5, 6]
 */
+  

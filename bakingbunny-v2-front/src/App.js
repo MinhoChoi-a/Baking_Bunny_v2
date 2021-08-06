@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
 import './App.css';
 
@@ -8,9 +8,22 @@ import tokenService from '../service/testToken'
 
 import Togglable from '../component/Togglable'
 
-import reducer from './reducer' //defines impact of action to the state of the application
+import reducer, { initializeNotes } from './reducers/reducer' //defines impact of action to the state of the application
+import filterReducer from './reducers/filterReducer';
 
-const store = createStore(reducer)
+//useselector?? react-redux hook => maps state to props
+//usedispatch?? react-reudx hook => maps props to state
+//newer version of connect fuction
+//FYI, connect(mapStateToProps:selector, mapDispatchToProps:dispatch) (component)
+//mapStateToProps: doesn't neet get whole state / nullable
+//mapDispatchToProps: manage action as a prop / nullable
+
+const reduc = combineReducers({
+  notes: reducer,
+  filter: filterReducer
+})
+
+const store = createStore(reduc)
 //dispatch => send action to the store
 //getState => get current state
 //subscribe => can make callback functino when store's state is changed
