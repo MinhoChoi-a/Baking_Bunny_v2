@@ -150,6 +150,35 @@ const App = () => {
     }
     
     </div>
+/*
+<Router>
+<div>
+  <Link style={padding} to="/">home</Link>
+  <Link style={padding} to="/notes">notes</Link>
+  <Link style={padding} to="/users">users</Link>
+</div>
+
+//the order of path is important, the first matched one will be rendered
+
+<Switch>
+  <Route path="/notes/:id"> => can use parameter with useParam(). method in the child component. Otherwise, we can use useRouteMatch('/notes/:id') hook
+    <Notes />
+  </Route>
+  <Route path="/users">
+    <Users />
+  </Route>
+  <Route path="/">
+    <Home />
+  </Route>
+</Switch>
+
+<div>
+  <i>Note app, Department of Computer Science 2021</i>
+</div>
+</Router>*/
+
+
+
   )
  }
 
